@@ -6,7 +6,7 @@ const About = () => {
     };
     return (
         <>
-            <div className={classes.about}>
+            <div className={classes.about} id='about'>
             <div>
                 <h1 style={hColor}>What exactly is Kitchen Timer?</h1>
                 <p> 

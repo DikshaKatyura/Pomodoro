@@ -7,6 +7,8 @@ const reducerFun = (state , action) =>{
             return {...state,onStart : action.value}
         case('TAB_CHANGE'):
             return {...state,activeTab : action.index}
+        case('SETTING'):
+            return {...state,show : action.value}
             default:
                 return state
     }
@@ -15,7 +17,8 @@ const reducerFun = (state , action) =>{
 const TimerContextProvider =(props)=> {
     const initialState = {
         onStart : false,
-        activeTab : 1
+        activeTab : 1,
+        show:false
     }
     const [timerState, dispatchFun] = useReducer(reducerFun,initialState);
     // const [activeTab, setTabsChange] = useState(1);
@@ -32,12 +35,19 @@ const TimerContextProvider =(props)=> {
         // setTabsChange(index);
     }
 
+    const showSettingHandler = (value) => {
+        dispatchFun({type : 'SETTING',value:value});
+        
+    }
+
 
     const timerCtx ={
         activeTab : timerState.activeTab,
         onTabsChange : toggleTabsHandler,
         onStart : timerState.onStart,
         onStartTimer : startTimerHandler,
+        show : timerState.show,
+        onShowSettings : showSettingHandler
     }
 
     return (

@@ -3,7 +3,6 @@ import { useContext } from "react";
 import Button from "../UI/Button";
 import Tabs from "./Tabs";
 import { time } from "../contextAPIs/Timer-Context";
-// import TimerContextProvider from "../contextAPIs/TimerContextProvider";
 
 
 const Timer = (props) => {
@@ -22,20 +21,18 @@ const Timer = (props) => {
             <div className="mb-10"></div>
             <div className="max-w-[480px] flex justify-center m-auto text-center text-white">
                 <div className="main">
-                    {/* <TimerContextProvider> */}
                     <Tabs onTabIndex={tabIndexHandler}></Tabs>
-                    {/* </TimerContextProvider> */}
                     <div className="mt-5 mb-5">
                         <div>
                             <p className="text-[120px] text-white font-bold">25:00</p>
                         </div>
                         <div className="mt-5">
-                            <Button onClick={toggleTimerHandler} 
-                            className={`h-[55px] pr-3 pl-3 rounded bg-white text-xl w-[200px] 
-                            ${ctx.activeTab === 2 ? 'text-orange-600' : (ctx.activeTab === 3 ? 'text-blue-600':'text-green-600')}
+                            <Button onClick={toggleTimerHandler}
+                                className={`h-[55px] pr-3 pl-3 rounded bg-white text-xl w-[200px] 
+                            ${ctx.activeTab === 2 ? 'text-orange-600' : (ctx.activeTab === 3 ? 'text-blue-600' : 'text-green-600')}
                              font-bold`}>
                                 {ctx.onStart ? 'Pause' : 'Start'}
-                                </Button>
+                            </Button>
                         </div>
                     </div>
                     <div className="mb-5">

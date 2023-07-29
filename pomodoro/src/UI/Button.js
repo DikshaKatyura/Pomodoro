@@ -5,7 +5,7 @@ const Button = (props) =>{
             <button 
             onClick={props.onClick} 
             className={`cursor-pointer ${props.className}`} 
-            style={props.style}>{props.children}</button>
+            >{props.children}</button>
         </>
     );
 }

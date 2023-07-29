@@ -5,4 +5,6 @@ export const time = createContext({
     onTabsChange: (index) =>{},
     onStart : false,
     onStartTimer : (value) => {},
+    show: false,
+    onShowSettings: () =>{}
 })
