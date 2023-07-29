@@ -1,0 +1,48 @@
+.about{
+    max-width: 620px;
+    text-align: left;
+    margin: auto;
+
+}
+.about a{
+    color: #65a30d;
+    font-weight: 600;
+}
+
+.about h1{
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.about h1::after{
+content: '';
+display: block;
+width: 30px;
+padding-top:8px ;
+border-bottom: 4px solid #65a30d;
+opacity: 0.6;
+border-radius: 10px;
+}
+.about p{
+    padding-left: 20px;
+    margin-top:20px;
+    opacity: 0.6;
+}
+
+
+
+.about ul li{
+    margin-top:20px;
+    opacity: 0.6;
+}
+
+.about li:nth-child(n+5){
+    margin-bottom: 20px;
+}
+
+.about li::before{
+    color:#65a30d;
+    font-weight: bold;
+    content: '\2022';
+    margin-right: 10px;
+}
