@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import {time}  from "./Timer-Context";
 
 const reducerFun = (state , action) =>{
@@ -26,12 +26,13 @@ const TimerContextProvider =(props)=> {
         onStart : false,
         activeTab : 1,
         show:false,
-        pomo : 60,
-        sb : 60,
+        pomo : 10,
+        sb : 10,
         lb : 60, 
     }
 
     const [stateVariable, dispatchFun] = useReducer(reducerFun,initialState);
+    const [timerState, setState] = useState([stateVariable.pomo, stateVariable.sb,stateVariable.lb]);
     // const [activeTab, setTabsChange] = useState(1);
     // const [onStart, setOnStart] = useState(false);
 
@@ -43,24 +44,27 @@ const TimerContextProvider =(props)=> {
                     const interval = setInterval(()=>{
                         dispatchFun({type : 'POMO', times : stateVariable.pomo - 1})
                     },300)
-            
+                    
                     return () => {
                         clearInterval(interval)
                     }
                 }else if(stateVariable.onStart && stateVariable.pomo === 0){
-                    dispatchFun({type:'START_TIMER' ,value : false})
-                    dispatchFun({type : 'POMO', times: stateVariable.pomo})
+                    dispatchFun({type:'START_TIMER' ,value : !stateVariable.onStart})
                 }
+                      
                 break;
             case (2):
                 if(stateVariable.onStart && stateVariable.sb > 0){
                     const interval = setInterval(()=>{
                         dispatchFun({type : 'SB', times : stateVariable.sb - 1})
-                    },1000)
+                    },500)
             
                     return () => {
                         clearInterval(interval)
                     }
+                }else if(stateVariable.onStart && stateVariable.sb === 0){
+                    dispatchFun({type:'START_TIMER' ,value : !stateVariable.onStart})
+                   
                 }
                 break;
             case (3):
@@ -72,6 +76,8 @@ const TimerContextProvider =(props)=> {
                     return () => {
                         clearInterval(interval)
                     }
+                }else if(stateVariable.onStart && stateVariable.lb === 0){
+                    dispatchFun({type:'START_TIMER' ,value : !stateVariable.onStart})
                 }
                 break;
             default:
@@ -81,15 +87,21 @@ const TimerContextProvider =(props)=> {
     },[stateVariable])
 
 
+
     const startTimerHandler = (value) => {
         console.log(value)
         dispatchFun({type: 'START_TIMER',value: value});
+        
         // setOnStart(value);
     }
 
 
     const toggleTabsHandler = (index) => {
         dispatchFun({type : 'TAB_CHANGE',index:index});
+        dispatchFun({type: 'START_TIMER',value: false});
+        dispatchFun({type : 'POMO' , times : timerState[0]});
+        dispatchFun({type : 'SB' , times : timerState[1]});
+        dispatchFun({type : 'LB' , times : timerState[2]});
         // setTabsChange(index);
     }
 
@@ -100,9 +112,13 @@ const TimerContextProvider =(props)=> {
     }
 
     const setTimerHandler = (times) => {
-        dispatchFun({type : 'POMO' , times : times[0]});
-        dispatchFun({type : 'SB' , times : times[1]});
-        dispatchFun({type : 'LB' , times : times[2]});
+        if(times[0] === 0 || times[1] === 0 || times[2] === 0){
+            setState(times);
+        }else{
+            dispatchFun({type : 'POMO' , times : times[0]});
+            dispatchFun({type : 'SB' , times : times[1]});
+            dispatchFun({type : 'LB' , times : times[2]});
+        }
     }
 
     const timerCtx ={
@@ -115,7 +131,8 @@ const TimerContextProvider =(props)=> {
         pomo : stateVariable.pomo,
         sb : stateVariable.sb,
         lb : stateVariable.lb,
-        onSetTimer : setTimerHandler
+        onSetTimer : setTimerHandler,
+        timerState : timerState,
     }
 
     return (

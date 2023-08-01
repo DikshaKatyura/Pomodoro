@@ -6,7 +6,7 @@ import { time } from "../contextAPIs/Timer-Context";
 
 
 
-const Settings = () =>{
+const Settings = (props) =>{
 
     const ctx = useContext(time);
     const pomoRef = useRef();

@@ -7,10 +7,9 @@ export const time = createContext({
     onStartTimer : (value) => {},
     show: false,
     onShowSettings: () =>{},
-    minutes:{
-        pomo : 60,
-        sb : 60,
-        lb : 60,
-    },
-    onSetTimer : () =>{}
+    pomo : 60,
+    sb : 60,
+    lb : 60,
+    onSetTimer : () =>{},
+    timerState : [],
 })
