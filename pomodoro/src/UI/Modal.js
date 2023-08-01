@@ -5,7 +5,7 @@ import { time } from "../contextAPIs/Timer-Context";
 
 const Backdrop = props => {
     return (
-        <div className={classes.backdrop } onClick={props.onClose}>{props.children}</div>
+        <div className={classes.backdrop } onClick={props.onClose}></div>
     );
 }
 

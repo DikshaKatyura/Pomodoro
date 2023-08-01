@@ -4,6 +4,7 @@ const Button = (props) =>{
         <>
             <button 
             onClick={props.onClick} 
+            type={props.type}
             className={`cursor-pointer ${props.className}`} 
             >{props.children}</button>
         </>

@@ -11,8 +11,10 @@
   .overlay {
     position: fixed;
     top: 20vh;
-    /* left: 5%; */
-    width: 100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: fit-content;
     z-index: 30;
     display: flex;
     justify-content: center;

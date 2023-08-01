@@ -1,35 +1,27 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import Button from "../UI/Button";
 import Inputs from "../UI/Inputs";
 import Modal from "../UI/Modal";
 import { time } from "../contextAPIs/Timer-Context";
 
 
-const arr = [
-    {
-        label : 'Pomodoro',
-        id: 'pomo',
-        type: 'number',
-        value : 25
-    },
-    {
-        label : 'Short Break',
-        id: 'sb',
-        type: 'number',
-        value : 5
-    },
-    {
-        label : 'Long Break',
-        id: 'lb',
-        type: 'number',
-        value : 15
-    }
-]
 
 const Settings = () =>{
 
     const ctx = useContext(time);
+    const pomoRef = useRef();
+    const sbRef = useRef();
+    const lbRef = useRef();
     const closeSettingHandler = () =>{
+        ctx.onShowSettings(false);
+    }
+
+    const submitTimesHandler = (event) =>{
+        event.preventDefault();
+        const pomo = pomoRef.current.value * 60;
+        const sb = sbRef.current.value * 60;
+        const lb = lbRef.current.value * 60;
+        ctx.onSetTimer([pomo,sb,lb]);
         ctx.onShowSettings(false);
     }
 
@@ -52,19 +44,14 @@ const Settings = () =>{
                 </span>
                 <h4 className="font-extrabold text-[#666666] ml-2">TIMER</h4>
                 </div>
-                <div className="flex justify-between align-center">  
-                        {arr.map(item => {
-                            return (
-                                    <Inputs
-                                    label = {item.label}
-                                    id={item.id}
-                                    type={item.type}
-                                    value={item.value}  
-                                    />
-                            )
-                        })}
-                    
-                </div>
+                <form action="submit" onSubmit={submitTimesHandler} className=" flex flex-col gap-y-4">
+                    <div className="flex justify-between align-center border-b-2 pb-10 border-[#eeeeee]">
+                <Inputs ref = {pomoRef} inputs ={{id : 'pomo', type : 'number', label : 'Pomodoro',defaultValue : (ctx.pomo/60)}}/>
+                <Inputs ref = {sbRef} inputs ={{id : 'sb', type : 'number', label : 'Short Break',defaultValue : (ctx.sb/60)}}/>
+                <Inputs ref = {lbRef} inputs ={{id : 'lb', type : 'number', label : 'Long Break',defaultValue : (ctx.lb/60)}}/>
+                    </div>
+                <Button type='submit' className="self-end pt-2 pb-2 pr-3 pl-3 bg-black rounded text-white font-bold">Done</Button>
+                    </form> 
             </div>
         </Modal>
     )

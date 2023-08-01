@@ -7,7 +7,25 @@ import { time } from "../contextAPIs/Timer-Context";
 
 const Timer = (props) => {
     const ctx = useContext(time);
+    // console.log(ctx);
+    const getTime = time => {
+        const min = Math.floor((time / 60) ,3);
+        const sec = Math.floor((time % 60), 2);
+        return `${min > 10 ? min : '0'+min}:${sec > 10 ? sec : '0'+sec}`;
+    }
+    let timer;
+    
+    switch(ctx.activeTab){
+        case(3):
+            timer = getTime(ctx.lb);
+            break;
+        case(2):
+            timer = getTime(ctx.sb);
+            break;
+        default:
+            timer = getTime(ctx.pomo);
 
+    }
     const toggleTimerHandler = () => {
         props.onStartTimer(!ctx.onStart);
     }
@@ -15,6 +33,7 @@ const Timer = (props) => {
     const tabIndexHandler = (index) => {
         props.onTabsChange(index);
     }
+     
 
     return (
         <>
@@ -24,7 +43,10 @@ const Timer = (props) => {
                     <Tabs onTabIndex={tabIndexHandler}></Tabs>
                     <div className="mt-5 mb-5">
                         <div>
-                            <p className="text-[120px] text-white font-bold">25:00</p>
+                            <p className="text-[120px] text-white font-bold">
+                                {timer}
+                                {/* {timer.toString().length > 1 ? timer : `0${timer}`}:{!ctx.onStart ? '00' : (ctx.seconds.toString().length < 2 ? `0${ctx.seconds}` : ctx.seconds)} */}
+                            </p>
                         </div>
                         <div className="mt-5">
                             <Button onClick={toggleTimerHandler}

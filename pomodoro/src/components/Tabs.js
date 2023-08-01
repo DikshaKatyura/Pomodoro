@@ -5,7 +5,7 @@ import  {time}  from "../contextAPIs/Timer-Context";
 const Tabs = (props) => {
 
     const ctx = useContext(time);
-
+                                                 
     const toggleTabsHandler = (index) =>{
         props.onTabIndex(index);
     }
