@@ -12,6 +12,7 @@ const Settings = (props) =>{
     const pomoRef = useRef();
     const sbRef = useRef();
     const lbRef = useRef();
+    const audioRef = useRef();
     const closeSettingHandler = () =>{
         ctx.onShowSettings(false);
     }
@@ -23,6 +24,11 @@ const Settings = (props) =>{
         const lb = lbRef.current.value * 60;
         ctx.onSetTimer([pomo,sb,lb]);
         ctx.onShowSettings(false);
+    }
+
+    const playAudio = () =>{
+        console.log(audioRef.current)
+        audioRef.current.play();
     }
 
     return(
@@ -46,12 +52,15 @@ const Settings = (props) =>{
                 </div>
                 <form action="submit" onSubmit={submitTimesHandler} className=" flex flex-col gap-y-4">
                     <div className="flex justify-between align-center border-b-2 pb-10 border-[#eeeeee]">
-                <Inputs ref = {pomoRef} inputs ={{id : 'pomo', type : 'number', label : 'Pomodoro',defaultValue : (ctx.pomo/60)}}/>
-                <Inputs ref = {sbRef} inputs ={{id : 'sb', type : 'number', label : 'Short Break',defaultValue : (ctx.sb/60)}}/>
-                <Inputs ref = {lbRef} inputs ={{id : 'lb', type : 'number', label : 'Long Break',defaultValue : (ctx.lb/60)}}/>
+                <Inputs ref = {pomoRef} inputs ={{id : 'pomo', type : 'number', label : 'Pomodoro',defaultValue : (ctx.pomo/60), min : 1,max : 60}}/>
+                <Inputs ref = {sbRef} inputs ={{id : 'sb', type : 'number', label : 'Short Break',defaultValue : (ctx.sb/60),min : 1,max : 60}}/>
+                <Inputs ref = {lbRef} inputs ={{id : 'lb', type : 'number', label : 'Long Break',defaultValue : (ctx.lb/60),min : 1,max : 60}}/>
                     </div>
                 <Button type='submit' className="self-end pt-2 pb-2 pr-3 pl-3 bg-black rounded text-white font-bold">Done</Button>
                     </form> 
+
+                <audio src="src\assets\kitchen-timer-33043.mp3" ref={audioRef}></audio>
+        <button onClick={playAudio}>Play</button>
             </div>
         </Modal>
     )

@@ -26,8 +26,8 @@ const TimerContextProvider =(props)=> {
         onStart : false,
         activeTab : 1,
         show:false,
-        pomo : 10,
-        sb : 10,
+        pomo : 60,
+        sb : 60,
         lb : 60, 
     }
 
@@ -40,7 +40,7 @@ const TimerContextProvider =(props)=> {
     useEffect(()=>{
         switch (stateVariable.activeTab) {
             case (1):
-                if(stateVariable.onStart && stateVariable.pomo > 0){
+                if(stateVariable.onStart && stateVariable.pomo >= 0){
                     const interval = setInterval(()=>{
                         dispatchFun({type : 'POMO', times : stateVariable.pomo - 1})
                     },300)
@@ -48,13 +48,14 @@ const TimerContextProvider =(props)=> {
                     return () => {
                         clearInterval(interval)
                     }
-                }else if(stateVariable.onStart && stateVariable.pomo === 0){
+                }else if(stateVariable.onStart && stateVariable.pomo < 0){
                     dispatchFun({type:'START_TIMER' ,value : !stateVariable.onStart})
+                    dispatchFun({type : 'POMO' , times : timerState[0]});
                 }
                       
                 break;
             case (2):
-                if(stateVariable.onStart && stateVariable.sb > 0){
+                if(stateVariable.onStart && stateVariable.sb >= 0){
                     const interval = setInterval(()=>{
                         dispatchFun({type : 'SB', times : stateVariable.sb - 1})
                     },500)
@@ -62,13 +63,13 @@ const TimerContextProvider =(props)=> {
                     return () => {
                         clearInterval(interval)
                     }
-                }else if(stateVariable.onStart && stateVariable.sb === 0){
+                }else if(stateVariable.onStart && stateVariable.sb < 0){
                     dispatchFun({type:'START_TIMER' ,value : !stateVariable.onStart})
-                   
+                    dispatchFun({type : 'TAB_CHANGE',index: 1});
                 }
                 break;
             case (3):
-                if(stateVariable.onStart && stateVariable.lb > 0){
+                if(stateVariable.onStart && stateVariable.lb >= 0){
                     const interval = setInterval(()=>{
                         dispatchFun({type : 'LB', times : stateVariable.lb - 1})
                     },1000)
@@ -76,15 +77,16 @@ const TimerContextProvider =(props)=> {
                     return () => {
                         clearInterval(interval)
                     }
-                }else if(stateVariable.onStart && stateVariable.lb === 0){
+                }else if(stateVariable.onStart && stateVariable.lb < 0){
                     dispatchFun({type:'START_TIMER' ,value : !stateVariable.onStart})
+                    dispatchFun({type : 'TAB_CHANGE',index: 1});
                 }
                 break;
             default:
                 break;
         }
         
-    },[stateVariable])
+    },[stateVariable,timerState])
 
 
 

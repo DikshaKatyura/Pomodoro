@@ -8,14 +8,13 @@ import { time } from "../contextAPIs/Timer-Context";
 const Timer = (props) => {
     const ctx = useContext(time);
     let timer;
-    let timerEnd = false;
-    // console.log(ctx);
+    // let timerEnd = false;
     const getTime = time => {
             const min = Math.floor((time / 60) ,3);
             const sec = Math.floor((time % 60), 2);
-            if(min === 0 && sec === 0){
-                timerEnd = true;
-            }
+            // if(min === 0 && sec === 0){
+            //     timerEnd = true;
+            // }
             return `${min >= 10 ? min : '0'+min}:${sec >= 10 ? sec : '0'+sec}`;
             
                 
@@ -40,9 +39,9 @@ const Timer = (props) => {
         props.onTabsChange(index);
     }
   
-    const resetTimeHandler = () => {
-        ctx.onSetTimer( ctx.timerState)
-    }
+    // const resetTimeHandler = () => {
+    //     ctx.onSetTimer( ctx.timerState)
+    // }
 
     return (
         <>
@@ -64,11 +63,11 @@ const Timer = (props) => {
                              font-bold`}>
                                 {ctx.onStart ? 'Pause' : 'Start'}
                             </Button>
-                            {timerEnd && <Button onClick={resetTimeHandler}  className={`h-[55px] pr-3 pl-3 rounded bg-white text-xl w-[200px] 
+                            {/* {timerEnd && <Button onClick={resetTimeHandler}  className={`h-[55px] pr-3 pl-3 rounded bg-white text-xl w-[200px] 
                             ${ctx.activeTab === 2 ? 'text-orange-600' : (ctx.activeTab === 3 ? 'text-blue-600' : 'text-green-600')}
                              font-bold`}>
                                 {'RESET'}
-                            </Button>}
+                            </Button>} */}
                         </div>
                     </div>
                     <div className="mb-5">
