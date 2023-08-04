@@ -1,14 +1,28 @@
 import { useContext } from "react";
 
+import { time } from "../contextAPIs/Timer-Context";
 import Button from "../UI/Button";
 import Tabs from "./Tabs";
-import { time } from "../contextAPIs/Timer-Context";
+import buttonClicked from '../assets/mouseClick.mp3';
+import kitchenTimer from '../assets/kitchen-timer.mp3';
+
 
 
 const Timer = (props) => {
+    let audio = new Audio(buttonClicked);
+    let ticks = new Audio(kitchenTimer)
     const ctx = useContext(time);
     let timer;
+    console.log(ctx.timeEndSound);
+    setInterval(() => {
+        ctx.setTimeEndSound(false);
+        }, 5000);
     // let timerEnd = false;
+    if(ctx.timeEndSound){
+        ticks.play()
+    }else{
+        ticks.pause()
+    }
     const getTime = time => {
             const min = Math.floor((time / 60) ,3);
             const sec = Math.floor((time % 60), 2);
@@ -32,6 +46,7 @@ const Timer = (props) => {
 
     }
     const toggleTimerHandler = () => {
+        audio.play();
         props.onStartTimer(!ctx.onStart);
     }
 
@@ -57,6 +72,7 @@ const Timer = (props) => {
                             </p>
                         </div>
                         <div className="mt-5">
+            
                             <Button onClick={toggleTimerHandler}
                                 className={`h-[55px] pr-3 pl-3 rounded bg-white text-xl w-[200px] 
                             ${ctx.activeTab === 2 ? 'text-orange-600' : (ctx.activeTab === 3 ? 'text-blue-600' : 'text-green-600')}

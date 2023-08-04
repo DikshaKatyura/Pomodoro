@@ -12,4 +12,6 @@ export const time = createContext({
     lb : 60,
     onSetTimer : () =>{},
     timerState : [],
+    timeEndSound : false,
+    setTimeEndSound :()=>{}
 })

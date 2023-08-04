@@ -1,6 +1,7 @@
 import { useEffect, useReducer, useState } from "react";
 import {time}  from "./Timer-Context";
 
+
 const reducerFun = (state , action) =>{
     switch(action.type){
         case('START_TIMER'):
@@ -26,16 +27,18 @@ const TimerContextProvider =(props)=> {
         onStart : false,
         activeTab : 1,
         show:false,
-        pomo : 60,
+        pomo : 10,
         sb : 60,
         lb : 60, 
     }
 
+
     const [stateVariable, dispatchFun] = useReducer(reducerFun,initialState);
     const [timerState, setState] = useState([stateVariable.pomo, stateVariable.sb,stateVariable.lb]);
+    const [timeEndSound, setTimeEndSound] = useState(false);
+   
     // const [activeTab, setTabsChange] = useState(1);
     // const [onStart, setOnStart] = useState(false);
-
 
     useEffect(()=>{
         switch (stateVariable.activeTab) {
@@ -48,7 +51,7 @@ const TimerContextProvider =(props)=> {
                     return () => {
                         clearInterval(interval)
                     }
-                }else if(stateVariable.onStart && stateVariable.pomo < 0){
+                }else if(stateVariable.onStart && stateVariable.pomo < 0){    
                     dispatchFun({type:'START_TIMER' ,value : !stateVariable.onStart})
                     dispatchFun({type : 'POMO' , times : timerState[0]});
                 }
@@ -64,7 +67,8 @@ const TimerContextProvider =(props)=> {
                         clearInterval(interval)
                     }
                 }else if(stateVariable.onStart && stateVariable.sb < 0){
-                    dispatchFun({type:'START_TIMER' ,value : !stateVariable.onStart})
+       
+                    dispatchFun({type:'START_TIMER' ,value : !stateVariable.onStart});
                     dispatchFun({type : 'TAB_CHANGE',index: 1});
                 }
                 break;
@@ -78,7 +82,8 @@ const TimerContextProvider =(props)=> {
                         clearInterval(interval)
                     }
                 }else if(stateVariable.onStart && stateVariable.lb < 0){
-                    dispatchFun({type:'START_TIMER' ,value : !stateVariable.onStart})
+              
+                    dispatchFun({type:'START_TIMER' ,value : !stateVariable.onStart});
                     dispatchFun({type : 'TAB_CHANGE',index: 1});
                 }
                 break;
@@ -86,14 +91,13 @@ const TimerContextProvider =(props)=> {
                 break;
         }
         
-    },[stateVariable,timerState])
+    },[stateVariable,timerState,timeEndSound])
 
 
 
     const startTimerHandler = (value) => {
         console.log(value)
         dispatchFun({type: 'START_TIMER',value: value});
-        
         // setOnStart(value);
     }
 
@@ -114,14 +118,17 @@ const TimerContextProvider =(props)=> {
     }
 
     const setTimerHandler = (times) => {
-        if(times[0] === 0 || times[1] === 0 || times[2] === 0){
-            setState(times);
-        }else{
+        // if(times[0] === 0 || times[1] === 0 || times[2] === 0){
+        //     setState(times);
+        // }else{
             dispatchFun({type : 'POMO' , times : times[0]});
             dispatchFun({type : 'SB' , times : times[1]});
             dispatchFun({type : 'LB' , times : times[2]});
-        }
+            setState(times)
+        // }
     }
+
+  
 
     const timerCtx ={
         activeTab : stateVariable.activeTab,
@@ -135,6 +142,8 @@ const TimerContextProvider =(props)=> {
         lb : stateVariable.lb,
         onSetTimer : setTimerHandler,
         timerState : timerState,
+        timeEndSound : timeEndSound,
+        setTimeEndSound : setTimeEndSound
     }
 
     return (

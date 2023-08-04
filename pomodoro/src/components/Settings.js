@@ -3,6 +3,7 @@ import Button from "../UI/Button";
 import Inputs from "../UI/Inputs";
 import Modal from "../UI/Modal";
 import { time } from "../contextAPIs/Timer-Context";
+import sound from '../assets/kitchen-timer.mp3';
 
 
 
@@ -13,6 +14,7 @@ const Settings = (props) =>{
     const sbRef = useRef();
     const lbRef = useRef();
     const audioRef = useRef();
+    let audio = new Audio(sound);
     const closeSettingHandler = () =>{
         ctx.onShowSettings(false);
     }
@@ -27,8 +29,7 @@ const Settings = (props) =>{
     }
 
     const playAudio = () =>{
-        console.log(audioRef.current)
-        audioRef.current.play();
+        audio.play();
     }
 
     return(
@@ -52,9 +53,9 @@ const Settings = (props) =>{
                 </div>
                 <form action="submit" onSubmit={submitTimesHandler} className=" flex flex-col gap-y-4">
                     <div className="flex justify-between align-center border-b-2 pb-10 border-[#eeeeee]">
-                <Inputs ref = {pomoRef} inputs ={{id : 'pomo', type : 'number', label : 'Pomodoro',defaultValue : (ctx.pomo/60), min : 1,max : 60}}/>
-                <Inputs ref = {sbRef} inputs ={{id : 'sb', type : 'number', label : 'Short Break',defaultValue : (ctx.sb/60),min : 1,max : 60}}/>
-                <Inputs ref = {lbRef} inputs ={{id : 'lb', type : 'number', label : 'Long Break',defaultValue : (ctx.lb/60),min : 1,max : 60}}/>
+                <Inputs ref = {pomoRef} inputs ={{id : 'pomo', type : 'number', label : 'Pomodoro',defaultValue : (ctx.timerState[0]/60), min : 1,max : 60}}/>
+                <Inputs ref = {sbRef} inputs ={{id : 'sb', type : 'number', label : 'Short Break',defaultValue : (ctx.timerState[1]/60),min : 1,max : 60}}/>
+                <Inputs ref = {lbRef} inputs ={{id : 'lb', type : 'number', label : 'Long Break',defaultValue : (ctx.timerState[2]/60),min : 1,max : 60}}/>
                     </div>
                 <Button type='submit' className="self-end pt-2 pb-2 pr-3 pl-3 bg-black rounded text-white font-bold">Done</Button>
                     </form> 
