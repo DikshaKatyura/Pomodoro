@@ -12,6 +12,8 @@ export const time = createContext({
     lb : 60,
     onSetTimer : () =>{},
     timerState : [],
-    timeEndSound : false,
-    setTimeEndSound :()=>{}
+    onSetSound : ()=>{},
+    sound : '',
+    progress : 0,
+    onSetProgress : () =>{}
 })

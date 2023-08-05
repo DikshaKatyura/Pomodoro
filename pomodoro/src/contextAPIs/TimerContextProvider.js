@@ -1,5 +1,6 @@
 import { useEffect, useReducer, useState } from "react";
 import {time}  from "./Timer-Context";
+import bell from '../assets/bell.mp3';
 
 
 const reducerFun = (state , action) =>{
@@ -27,52 +28,66 @@ const TimerContextProvider =(props)=> {
         onStart : false,
         activeTab : 1,
         show:false,
-        pomo : 10,
-        sb : 60,
-        lb : 60, 
+        pomo : 1500,
+        sb : 300,
+        lb : 900, 
     }
 
 
     const [stateVariable, dispatchFun] = useReducer(reducerFun,initialState);
     const [timerState, setState] = useState([stateVariable.pomo, stateVariable.sb,stateVariable.lb]);
     const [timeEndSound, setTimeEndSound] = useState(false);
-   
-    // const [activeTab, setTabsChange] = useState(1);
-    // const [onStart, setOnStart] = useState(false);
+    const [sound,setSound] = useState(bell);
+    const [progress,setProgress] = useState(0);
+
+    let audio = new Audio(sound);
+    
+    if(timeEndSound){
+        audio.play();
+    }else{
+        audio.pause();
+    }
 
     useEffect(()=>{
         switch (stateVariable.activeTab) {
             case (1):
+                setTimeEndSound(false);
                 if(stateVariable.onStart && stateVariable.pomo >= 0){
                     const interval = setInterval(()=>{
                         dispatchFun({type : 'POMO', times : stateVariable.pomo - 1})
-                    },300)
+                    },1000)
                     
                     return () => {
                         clearInterval(interval)
                     }
-                }else if(stateVariable.onStart && stateVariable.pomo < 0){    
+                }else if(stateVariable.onStart && stateVariable.pomo < 0){ 
+                    setTimeEndSound(true); 
                     dispatchFun({type:'START_TIMER' ,value : !stateVariable.onStart})
                     dispatchFun({type : 'POMO' , times : timerState[0]});
+                    dispatchFun({type : 'TAB_CHANGE',index: 2});
+                    setProgress(0);
                 }
                       
                 break;
             case (2):
+                setTimeEndSound(false);
                 if(stateVariable.onStart && stateVariable.sb >= 0){
                     const interval = setInterval(()=>{
                         dispatchFun({type : 'SB', times : stateVariable.sb - 1})
-                    },500)
+                    },1000)
             
                     return () => {
                         clearInterval(interval)
                     }
                 }else if(stateVariable.onStart && stateVariable.sb < 0){
-       
+                    setTimeEndSound(true);
                     dispatchFun({type:'START_TIMER' ,value : !stateVariable.onStart});
                     dispatchFun({type : 'TAB_CHANGE',index: 1});
+                    setProgress(0);
                 }
                 break;
             case (3):
+                setTimeEndSound(false);
                 if(stateVariable.onStart && stateVariable.lb >= 0){
                     const interval = setInterval(()=>{
                         dispatchFun({type : 'LB', times : stateVariable.lb - 1})
@@ -82,9 +97,10 @@ const TimerContextProvider =(props)=> {
                         clearInterval(interval)
                     }
                 }else if(stateVariable.onStart && stateVariable.lb < 0){
-              
+                    setTimeEndSound(true);
                     dispatchFun({type:'START_TIMER' ,value : !stateVariable.onStart});
                     dispatchFun({type : 'TAB_CHANGE',index: 1});
+                    setProgress(0);
                 }
                 break;
             default:
@@ -96,9 +112,8 @@ const TimerContextProvider =(props)=> {
 
 
     const startTimerHandler = (value) => {
-        console.log(value)
+        setTimeEndSound(false);
         dispatchFun({type: 'START_TIMER',value: value});
-        // setOnStart(value);
     }
 
 
@@ -108,7 +123,7 @@ const TimerContextProvider =(props)=> {
         dispatchFun({type : 'POMO' , times : timerState[0]});
         dispatchFun({type : 'SB' , times : timerState[1]});
         dispatchFun({type : 'LB' , times : timerState[2]});
-        // setTabsChange(index);
+        setProgress(0);
     }
 
     const showSettingHandler = (value) => {
@@ -118,17 +133,19 @@ const TimerContextProvider =(props)=> {
     }
 
     const setTimerHandler = (times) => {
-        // if(times[0] === 0 || times[1] === 0 || times[2] === 0){
-        //     setState(times);
-        // }else{
             dispatchFun({type : 'POMO' , times : times[0]});
             dispatchFun({type : 'SB' , times : times[1]});
             dispatchFun({type : 'LB' , times : times[2]});
-            setState(times)
-        // }
+            setState(times);
     }
 
-  
+    const setSoundHandler = (value) => {
+        setSound(value);
+    }
+
+    const setProgressHandler = (value) =>{
+        setProgress(value)
+    }
 
     const timerCtx ={
         activeTab : stateVariable.activeTab,
@@ -142,8 +159,10 @@ const TimerContextProvider =(props)=> {
         lb : stateVariable.lb,
         onSetTimer : setTimerHandler,
         timerState : timerState,
-        timeEndSound : timeEndSound,
-        setTimeEndSound : setTimeEndSound
+        sound : sound,
+        onSetSound : setSoundHandler,
+        progress : progress,
+        onSetProgress : setProgressHandler
     }
 
     return (

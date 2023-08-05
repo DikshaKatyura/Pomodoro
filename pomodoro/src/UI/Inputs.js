@@ -16,7 +16,6 @@ return (
         {...props.inputs}
         style={{backgroundColor:'rgb(239, 239, 239)'}}
         className="w-full box-border rounded p-1 focus:outline-0"
-        // ref = {props.ref}
         />    
     </div>
     </>

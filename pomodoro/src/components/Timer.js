@@ -4,41 +4,29 @@ import { time } from "../contextAPIs/Timer-Context";
 import Button from "../UI/Button";
 import Tabs from "./Tabs";
 import buttonClicked from '../assets/mouseClick.mp3';
-import kitchenTimer from '../assets/kitchen-timer.mp3';
 
 
 
 const Timer = (props) => {
     let audio = new Audio(buttonClicked);
-    let ticks = new Audio(kitchenTimer)
     const ctx = useContext(time);
     let timer;
-    console.log(ctx.timeEndSound);
-    setInterval(() => {
-        ctx.setTimeEndSound(false);
-        }, 5000);
-    // let timerEnd = false;
-    if(ctx.timeEndSound){
-        ticks.play()
-    }else{
-        ticks.pause()
-    }
+
+
     const getTime = time => {
-            const min = Math.floor((time / 60) ,3);
-            const sec = Math.floor((time % 60), 2);
-            // if(min === 0 && sec === 0){
-            //     timerEnd = true;
-            // }
-            return `${min >= 10 ? min : '0'+min}:${sec >= 10 ? sec : '0'+sec}`;
-            
-                
+        const min = Math.floor((time / 60), 3);
+        const sec = Math.floor((time % 60), 2);
+
+        return `${min >= 10 ? min : '0' + min}:${sec >= 10 ? sec : '0' + sec}`;
+
+
     }
-    
-    switch(ctx.activeTab){
-        case(3):
+
+    switch (ctx.activeTab) {
+        case (3):
             timer = getTime(ctx.lb);
             break;
-        case(2):
+        case (2):
             timer = getTime(ctx.sb);
             break;
         default:
@@ -53,10 +41,8 @@ const Timer = (props) => {
     const tabIndexHandler = (index) => {
         props.onTabsChange(index);
     }
-  
-    // const resetTimeHandler = () => {
-    //     ctx.onSetTimer( ctx.timerState)
-    // }
+
+
 
     return (
         <>
@@ -68,26 +54,21 @@ const Timer = (props) => {
                         <div>
                             <p className="text-[120px] text-white font-bold">
                                 {timer}
-                                {/* {timer.toString().length > 1 ? timer : `0${timer}`}:{!ctx.onStart ? '00' : (ctx.seconds.toString().length < 2 ? `0${ctx.seconds}` : ctx.seconds)} */}
                             </p>
                         </div>
                         <div className="mt-5">
-            
+
                             <Button onClick={toggleTimerHandler}
-                                className={`h-[55px] pr-3 pl-3 rounded bg-white text-xl w-[200px] 
+                                className={`h-[55px] pr-3 pl-3 rounded bg-white text-2xl w-[200px] 
                             ${ctx.activeTab === 2 ? 'text-orange-600' : (ctx.activeTab === 3 ? 'text-blue-600' : 'text-green-600')}
                              font-bold`}>
                                 {ctx.onStart ? 'Pause' : 'Start'}
                             </Button>
-                            {/* {timerEnd && <Button onClick={resetTimeHandler}  className={`h-[55px] pr-3 pl-3 rounded bg-white text-xl w-[200px] 
-                            ${ctx.activeTab === 2 ? 'text-orange-600' : (ctx.activeTab === 3 ? 'text-blue-600' : 'text-green-600')}
-                             font-bold`}>
-                                {'RESET'}
-                            </Button>} */}
+
                         </div>
                     </div>
                     <div className="mb-5">
-                        <p className="font-medium text-base">{ctx.activeTab === 2 ? 'Time for a short break!' : (ctx.activeTab === 3 ? 'Time for long... break!' : 'Time to Focus!')}</p>
+                        <p className="font-bold text-xl text-base">{ctx.activeTab === 2 ? 'Time for a short break!' : (ctx.activeTab === 3 ? 'Time for long... break!' : 'Time to Focus!')}</p>
                     </div>
                 </div>
             </div>

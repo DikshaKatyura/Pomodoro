@@ -2,7 +2,7 @@ import classes from './About.module.css';
 
 const About = () => {
     const hColor = {
-        color:'#65a30d'
+        color : '#9f1239'
     };
     return (
         <>

@@ -2,10 +2,9 @@
     max-width: 620px;
     text-align: left;
     margin: auto;
-
 }
 .about a{
-    color: #65a30d;
+    color: #9f1239;
     font-weight: 600;
 }
 
@@ -19,7 +18,8 @@ content: '';
 display: block;
 width: 30px;
 padding-top:8px ;
-border-bottom: 4px solid #65a30d;
+border-bottom: 4px solid #9f1239;
+
 opacity: 0.6;
 border-radius: 10px;
 }
@@ -41,8 +41,10 @@ border-radius: 10px;
 }
 
 .about li::before{
-    color:#65a30d;
+    color:#9f1239;
     font-weight: bold;
     content: '\2022';
     margin-right: 10px;
 }
+
+

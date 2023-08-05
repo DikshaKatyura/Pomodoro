@@ -3,6 +3,7 @@ import Header from "../Header";
 import Settings from "../Settings";
 import Timer from "../Timer";
 import { time } from "../../contextAPIs/Timer-Context";
+import ProgressBar from "./ProgressBar";
 
 const SectionOne = (props) =>{
 
@@ -22,9 +23,10 @@ const SectionOne = (props) =>{
 
 
     return (
-        <div className={`h-screen ${ctx.activeTab === 2 ? 'bg-orange-600' : (ctx.activeTab === 3 ? 'bg-blue-600':'bg-green-600')}`}>
+        <div className={`h-screen ${ctx.activeTab === 2 ? 'bg-orange-800' : (ctx.activeTab === 3 ? 'bg-cyan-800':'bg-green-800')}`}>
             {ctx.show && <Settings />}
         <Header onShowSetting = {settingsHandler}/>
+        <ProgressBar />
         <Timer onTabsChange = {tabsChangeHandler} onStartTimer = {startTimerHandler} ></Timer>
         </div>
     );
