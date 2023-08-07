@@ -15,9 +15,6 @@ const Settings = (props) => {
   const pomoRef = useRef();
   const sbRef = useRef();
   const lbRef = useRef();
-  const closeSettingHandler = () => {
-    ctx.onShowSettings(false);
-  };
 
   const submitTimesHandler = (event) => {
     event.preventDefault();
@@ -26,10 +23,6 @@ const Settings = (props) => {
     const lb = lbRef.current.value * 60;
     ctx.onSetTimer([pomo, sb, lb]);
     ctx.onShowSettings(false);
-  };
-
-  const selectSoundHandler = (event) => {
-    ctx.onSetSound(event.target.value);
   };
 
   const optionStyle = {
@@ -44,7 +37,7 @@ const Settings = (props) => {
     <Modal>
       <div className="flex justify-between mr-2.5 ml-2.5 pb-5 border-b-[1px] border-[#eeeeee]">
         <h4 className="text-[#666666] font-extrabold"> SETTING</h4>
-        <Button onClick={closeSettingHandler}>
+        <Button onClick={() => ctx.onShowSettings(false)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -84,7 +77,7 @@ const Settings = (props) => {
           onSubmit={submitTimesHandler}
           className=" flex flex-col gap-y-4"
         >
-          <div className="flex justify-between align-center border-b-2 pb-10 border-[#eeeeee]">
+          <div className="flex justify-between align-center border-b-2 pb-10 border-[#eeeeee] space-x-3">
             <Inputs
               ref={pomoRef}
               inputs={{
@@ -148,7 +141,7 @@ const Settings = (props) => {
             <div>
               <select
                 value={ctx.sound}
-                onChange={selectSoundHandler}
+                onChange={(e) => ctx.onSetSound(e.target.value)}
                 style={optionStyle}
                 className="bg-[#eeeeee] rounded"
               >

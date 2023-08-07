@@ -5,20 +5,8 @@ import Timer from "../Timer";
 import { time } from "../../contextAPIs/Timer-Context";
 import ProgressBar from "./ProgressBar";
 
-const SectionOne = (props) => {
+const SectionOne = () => {
   const ctx = useContext(time);
-
-  const tabsChangeHandler = (index) => {
-    ctx.onTabsChange(index);
-  };
-
-  const startTimerHandler = (value) => {
-    ctx.onStartTimer(value);
-  };
-
-  const settingsHandler = (show) => {
-    ctx.onShowSettings(show);
-  };
 
   return (
     <div
@@ -31,12 +19,9 @@ const SectionOne = (props) => {
       }`}
     >
       {ctx.show && <Settings />}
-      <Header onShowSetting={settingsHandler} />
+      <Header />
       <ProgressBar />
-      <Timer
-        onTabsChange={tabsChangeHandler}
-        onStartTimer={startTimerHandler}
-      ></Timer>
+      <Timer></Timer>
     </div>
   );
 };

@@ -1,37 +1,23 @@
-import { createPortal } from "react-dom";
-import classes from "./Modal.module.css";
 import { useContext } from "react";
 import { time } from "../contextAPIs/Timer-Context";
-
-const Backdrop = (props) => {
-  return <div className={classes.backdrop} onClick={props.onClose}></div>;
-};
-
-const Overlay = (props) => {
-  return (
-    <div className={classes.overlay}>
-      <div className={classes.modal}>{props.children}</div>
-    </div>
-  );
-};
 
 const Modal = (props) => {
   const ctx = useContext(time);
 
-  const closeSettingHandler = () => {
-    ctx.onShowSettings(false);
-  };
-
   return (
     <>
-      {createPortal(
-        <Backdrop onClose={closeSettingHandler} />,
-        document.getElementById("overlays"),
-      )}
-      {createPortal(
-        <Overlay>{props.children}</Overlay>,
-        document.getElementById("overlays"),
-      )}
+      <div
+        className="fixed inset-0 z-10 flex items-center justify-center bg-black bg-opacity-50"
+        onClick={() => ctx.onShowSettings(false)}
+      >
+        <div
+          className="bg-white rounded-lg p-4 w-[90%] h-[90%] max-w-[500px] max-h-[500px] z-20"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {props.children}
+        </div>
+      </div>
+      <div className="fixed inset-0 z-0 bg-black bg-opacity-50"></div>
     </>
   );
 };

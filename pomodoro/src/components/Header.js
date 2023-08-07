@@ -2,12 +2,9 @@ import { useContext } from "react";
 import Button from "../UI/Button";
 import { time } from "../contextAPIs/Timer-Context";
 
-const Header = (props) => {
+const Header = () => {
   const ctx = useContext(time);
 
-  const settingsHandler = () => {
-    props.onShowSetting(!ctx.show);
-  };
   return (
     <>
       <div className="container-none flex justify-around p-4 text-white">
@@ -46,7 +43,7 @@ const Header = (props) => {
             </li>
             <li className="mr-10">
               <Button
-                onClick={settingsHandler}
+                onClick={() => ctx.onShowSettings(!ctx.show)}
                 className="flex align-center text-bold rounded pt-2 pb-2 pr-3 pl-3 min-w-[70px]"
               >
                 <svg

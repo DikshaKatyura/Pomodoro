@@ -5,7 +5,7 @@ import Button from "../UI/Button";
 import Tabs from "./Tabs";
 import buttonClicked from "../assets/mouseClick.mp3";
 
-const Timer = (props) => {
+const Timer = () => {
   let audio = new Audio(buttonClicked);
   const ctx = useContext(time);
   let timer;
@@ -29,11 +29,7 @@ const Timer = (props) => {
   }
   const toggleTimerHandler = () => {
     audio.play();
-    props.onStartTimer(!ctx.onStart);
-  };
-
-  const tabIndexHandler = (index) => {
-    props.onTabsChange(index);
+    ctx.onStartTimer(!ctx.onStart);
   };
 
   return (
@@ -41,7 +37,7 @@ const Timer = (props) => {
       <div className="mb-10"></div>
       <div className="max-w-[480px] flex justify-center m-auto text-center text-white">
         <div className="main">
-          <Tabs onTabIndex={tabIndexHandler}></Tabs>
+          <Tabs onTabIndex={ctx.onTabsChange}></Tabs>
           <div className="mt-5 mb-5">
             <div>
               <p className="text-[120px] text-white font-bold">{timer}</p>
@@ -64,7 +60,7 @@ const Timer = (props) => {
             </div>
           </div>
           <div className="mb-5">
-            <p className="font-bold text-xl text-base">
+            <p className="font-bold  text-base">
               {ctx.activeTab === 2
                 ? "Time for a short break!"
                 : ctx.activeTab === 3
