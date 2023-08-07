@@ -44,7 +44,7 @@ const timeRemaining = {
 }
 
 return (
-    <div style={totalTime} className="h-[1px] rounded">
+    <div style={totalTime} className="h-[1px] rounded sm:!m-[10px]">
         <div style={timeRemaining} className="h-1 rounded bg-[#d8b4fe] flex align-center"></div>
     </div>
 );

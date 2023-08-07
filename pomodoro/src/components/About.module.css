@@ -47,4 +47,8 @@ border-radius: 10px;
     margin-right: 10px;
 }
 
-
+@media (max-width:639px) {
+    .about{
+        margin: 20px !important;
+    }
+}

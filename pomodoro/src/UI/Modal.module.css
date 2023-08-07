@@ -14,7 +14,7 @@
     left: 0;
     right: 0;
     margin: auto;
-    width: fit-content;
+    max-width: fit-content;
     z-index: 30;
     display: flex;
     justify-content: center;

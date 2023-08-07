@@ -42,6 +42,9 @@ const Timer = (props) => {
         props.onTabsChange(index);
     }
 
+    const style = {
+        backgroundColor:'rgba(255, 255, 255, 0.1)'
+    }
 
 
     return (
@@ -50,13 +53,13 @@ const Timer = (props) => {
             <div className="max-w-[480px] flex justify-center m-auto text-center text-white">
                 <div className="main">
                     <Tabs onTabIndex={tabIndexHandler}></Tabs>
-                    <div className="mt-5 mb-5">
+                    <div className="mt-5 mb-5 sm:mt-10 mb-10 py-5 px-12 sm:px-5 rounded" style={style}>
                         <div>
-                            <p className="text-[120px] text-white font-bold">
+                            <p className="text-[120px] text-white font-bold sm:text-[100px]">
                                 {timer}
                             </p>
                         </div>
-                        <div className="mt-5">
+                        <div className="mt-5 sm:mt-16">
 
                             <Button onClick={toggleTimerHandler}
                                 className={`h-[55px] pr-3 pl-3 rounded bg-white text-2xl w-[200px] 

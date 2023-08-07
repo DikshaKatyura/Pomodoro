@@ -63,7 +63,7 @@ const Settings = (props) =>{
                 <h4 className="font-extrabold text-[#666666] ml-2">TIMER</h4>
                 </div>
                 <form action="submit" onSubmit={submitTimesHandler} className=" flex flex-col gap-y-4">
-                    <div className="flex justify-between align-center border-b-2 pb-10 border-[#eeeeee]">
+                    <div className="flex justify-between align-center border-b-2 pb-10 sm:gap-x-2 border-[#eeeeee]">
                 <Inputs ref = {pomoRef} inputs ={{id : 'pomo', type : 'number', label : 'Pomodoro',defaultValue : (ctx.timerState[0]/60), min : 0,max : 60}}/>
                 <Inputs ref = {sbRef} inputs ={{id : 'sb', type : 'number', label : 'Short Break',defaultValue : (ctx.timerState[1]/60),min : 0,max : 60}}/>
                 <Inputs ref = {lbRef} inputs ={{id : 'lb', type : 'number', label : 'Long Break',defaultValue : (ctx.timerState[2]/60),min : 0,max : 60}}/>
