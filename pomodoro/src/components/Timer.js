@@ -1,13 +1,11 @@
-import { useContext } from "react";
-
-import { time } from "../contextAPIs/Timer-Context";
+import { useTimeContext } from "../contextAPIs/Timer-Context";
 import Button from "../UI/Button";
 import Tabs from "./Tabs";
 import buttonClicked from "../assets/mouseClick.mp3";
 
 const Timer = () => {
   let audio = new Audio(buttonClicked);
-  const ctx = useContext(time);
+  const ctx = useTimeContext();
   let timer;
 
   const getTime = (time) => {

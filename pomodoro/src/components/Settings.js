@@ -1,8 +1,8 @@
-import { useContext, useRef } from "react";
+import { useRef } from "react";
 import Button from "../UI/Button";
 import Inputs from "../UI/Inputs";
 import Modal from "../UI/Modal";
-import { time } from "../contextAPIs/Timer-Context";
+import { useTimeContext } from "../contextAPIs/Timer-Context";
 
 import bell from "../assets/bell.mp3";
 import kitchen from "../assets/kitchen.mp3";
@@ -11,7 +11,7 @@ import warning from "../assets/warning.mp3";
 import roaster from "../assets/rowster.wav";
 
 const Settings = (props) => {
-  const ctx = useContext(time);
+  const ctx = useTimeContext();
   const pomoRef = useRef();
   const sbRef = useRef();
   const lbRef = useRef();

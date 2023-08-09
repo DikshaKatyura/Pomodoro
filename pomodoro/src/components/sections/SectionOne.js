@@ -1,12 +1,11 @@
-import { useContext } from "react";
 import Header from "../Header";
 import Settings from "../Settings";
 import Timer from "../Timer";
-import { time } from "../../contextAPIs/Timer-Context";
+import { useTimeContext } from "../../contextAPIs/Timer-Context";
 import ProgressBar from "./ProgressBar";
 
 const SectionOne = () => {
-  const ctx = useContext(time);
+  const ctx = useTimeContext();
 
   return (
     <div

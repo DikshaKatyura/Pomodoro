@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { time } from "../contextAPIs/Timer-Context";
+import { useTimeContext } from "../contextAPIs/Timer-Context";
 
 const Modal = (props) => {
-  const ctx = useContext(time);
+  const ctx = useTimeContext();
 
   return (
     <>

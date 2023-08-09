@@ -1,9 +1,8 @@
-import { useContext } from "react";
 import Button from "../UI/Button";
-import { time } from "../contextAPIs/Timer-Context";
+import { useTimeContext } from "../contextAPIs/Timer-Context";
 
 const Tabs = ({ onTabIndex }) => {
-  const ctx = useContext(time);
+  const ctx = useTimeContext();
 
   return (
     <>

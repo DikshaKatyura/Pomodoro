@@ -1,8 +1,8 @@
-import { useContext, useEffect } from "react";
-import { time } from "../../contextAPIs/Timer-Context";
+import { useEffect } from "react";
+import { useTimeContext } from "../../contextAPIs/Timer-Context";
 
 const ProgressBar = () => {
-  const ctx = useContext(time);
+  const ctx = useTimeContext();
 
   var width = 0;
   switch (ctx.activeTab) {
