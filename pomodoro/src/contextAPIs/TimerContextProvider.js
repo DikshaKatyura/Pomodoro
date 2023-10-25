@@ -3,6 +3,7 @@ import {time}  from "./Timer-Context";
 import bell from '../assets/bell.mp3';
 
 
+
 const reducerFun = (state , action) =>{
     switch(action.type){
         case('START_TIMER'):
@@ -38,6 +39,7 @@ const TimerContextProvider =(props)=> {
     const [timerState, setState] = useState([stateVariable.pomo, stateVariable.sb,stateVariable.lb]);  //updating the time for the timer
     const [timeEndSound, setTimeEndSound] = useState(false);  //sound state 
     const [sound,setSound] = useState(bell);  //sounds
+    
     const [progress,setProgress] = useState(0);  //progress bar state
 
     let audio = new Audio(sound);
@@ -168,7 +170,8 @@ const TimerContextProvider =(props)=> {
         sound : sound,
         onSetSound : setSoundHandler,
         progress : progress,
-        onSetProgress : setProgressHandler
+        onSetProgress : setProgressHandler,
+        
     }
 
     return (

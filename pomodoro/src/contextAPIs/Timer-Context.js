@@ -15,5 +15,7 @@ export const time = createContext({
     onSetSound : ()=>{},
     sound : '',
     progress : 0,
-    onSetProgress : () =>{}
+    onSetProgress : () =>{},
+    background :{
+    }
 })
