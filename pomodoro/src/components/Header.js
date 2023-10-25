@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import Button from "../UI/Button";
 import { time } from "../contextAPIs/Timer-Context";
+import Button from "../UI/Button";
 
 
 const Header = (props) => {
@@ -16,10 +16,10 @@ const Header = (props) => {
                     <h1 className="text-2xl font-bold">Kitchen Timer</h1>
                 </div>
                 <div>
-                    <ul className="flex justify-evenly">
+                    <ul className="flex justify-evenly gap-x-[8px]">
                         <li className="mr-10 sm:mr-0">
                             <a href="#about">
-                            <Button className="flex align-center rounded pt-2 pb-2 pr-3 pl-3 min-w-[70px] sm:min-w-0 sm:pr-1">
+                            <Button className="flex align-center rounded pt-2 pb-2 pr-3 pl-3 min-w-[70px] sm:min-w-0 sm:pr-1 bg-[#ffffff1a] hover:bg-[#ffffff45]">
                                 <svg style={{color:'darkgrey',marginRight:'4px'}} xmlns="http://www.w3.org/2000/svg" 
                                 fill={ctx.activeTab === 2 ? '#9a3412' :(ctx.activeTab === 3 ? '#155e75' : '#166534')} 
                                 viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
@@ -30,7 +30,7 @@ const Header = (props) => {
                             </a>
                         </li>
                         <li className="mr-10 sm:mr-0">
-                            <Button onClick={settingsHandler} className="flex align-center  rounded pt-2 pb-2 pr-3 pl-3 min-w-[70px] sm:min-w-0 sm:pr-1">
+                            <Button onClick={settingsHandler} className="flex align-center  rounded pt-2 pb-2 pr-3 pl-3 min-w-[70px] sm:min-w-0 sm:pr-1 bg-[#ffffff1a] hover:bg-[#ffffff45]">
                                 <svg style={{color:'darkgrey',marginRight:'4px'}} xmlns="http://www.w3.org/2000/svg" 
                                 fill={ctx.activeTab === 2 ? '#9a3412' :(ctx.activeTab === 3 ? '#155e75' : '#166534')} 
                                 viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">

@@ -1,8 +1,8 @@
 import { useContext, useRef } from "react";
+import { time } from "../contextAPIs/Timer-Context";
 import Button from "../UI/Button";
 import Inputs from "../UI/Inputs";
 import Modal from "../UI/Modal";
-import { time } from "../contextAPIs/Timer-Context";
 
 import bell from '../assets/bell.mp3';
 import kitchen from "../assets/kitchen.mp3";
@@ -11,7 +11,7 @@ import warning from "../assets/warning.mp3";
 import roaster from '../assets/rowster.wav';
 
 
-const Settings = (props) =>{
+const Settings = () =>{
 
 
     const ctx = useContext(time);
@@ -27,12 +27,12 @@ const Settings = (props) =>{
         const pomo = pomoRef.current.value * 60;
         const sb = sbRef.current.value * 60;
         const lb = lbRef.current.value * 60;
-        ctx.onSetTimer([pomo,sb,lb]);
+        ctx.onSetTimer([pomo,sb,lb]);  //sending the times for the timer to set their initial state
         ctx.onShowSettings(false);
     }
 
     const selectSoundHandler = (event) =>{
-        ctx.onSetSound(event.target.value);
+        ctx.onSetSound(event.target.value);  //setting the sound to be used as an alarm
     }
 
     const optionStyle = {

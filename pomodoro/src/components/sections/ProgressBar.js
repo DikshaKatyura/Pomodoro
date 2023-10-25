@@ -7,6 +7,7 @@ const ProgressBar = () =>{
 
     var width = 0;
         switch (ctx.activeTab) {
+            //setting the width of the bar according to the time that has been set for all the timers
             case (2):
                 width = ctx.timerState[1];
                 break;
@@ -18,7 +19,7 @@ const ProgressBar = () =>{
         }
 
         let maxWidth = 480;
-        let fraction = (maxWidth / width);
+        let fraction = (maxWidth / width);  //computing the fraction by the progress bar will move forward every second
         useEffect(() =>{
             if(ctx.onStart){
                 const interval = setInterval(() => {
@@ -38,14 +39,14 @@ const totalTime = {
     margin:'auto',
     backgroundColor:'rgba(0,0,0,0.1)'
 }
-const timeRemaining = {
+const timeCompleted = {
     maxWidth : `${ctx.progress}px`,
     
 }
 
 return (
     <div style={totalTime} className="h-[1px] rounded sm:!m-[10px]">
-        <div style={timeRemaining} className="h-1 rounded bg-[#d8b4fe] flex align-center"></div>
+        <div style={timeCompleted} className="h-1 rounded bg-[#d8b4fe] flex align-center"></div>
     </div>
 );
 }
