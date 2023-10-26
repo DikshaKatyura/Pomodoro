@@ -1,14 +1,12 @@
-import About from '../About';
-import Footer from '../Footer';
+import About from "../About";
+import Footer from "../Footer";
 const SectionTwo = () => {
-
-
-    return (
-        <>
-        <About></About>
-        <Footer></Footer>
-        </>
-    );
-}
+  return (
+    <>
+      <About></About>
+      <Footer></Footer>
+    </>
+  );
+};
 
 export default SectionTwo;
