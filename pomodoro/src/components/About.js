@@ -13,7 +13,7 @@ const About = () => {
             remind you to take a break in-between. This will improve you mental
             and physical health. This Web App is based on a Time Management
             Technique known as{" "}
-            <a className="text-rose" href="https://en.wikipedia.org/wiki/Pomodoro_Technique">
+            <a className="text-rose" href="https://en.wikipedia.org/wiki/Pomodoro_Technique" labelled="Read more about Pomodoro Technique">
               Pomodoro Technique
             </a>
             . It is developed by Francesco Cirillo in the late 1980s.

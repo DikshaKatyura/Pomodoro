@@ -5,7 +5,7 @@ const ThemeContextProvider = (props) => {
   const [background, setBackground] = useState({
     pomo: "bg-doodle_1",
     sb: "bg-doodle_2",
-    lb: "bg-doodle_7",
+    lb: "bg-doodle_6",
   });
   const [themes, setThemes] = useState({
     pomo: "bg-theme_1",

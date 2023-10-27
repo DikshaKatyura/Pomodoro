@@ -84,7 +84,7 @@ const SectionOne = () => {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="text-white relative bottom-0 w-6 h-6 animate-bounce"
+            className="text-blue-900 relative bottom-0 w-6 h-6 animate-bounce"
           >
             <path
               strokeLinecap="round"

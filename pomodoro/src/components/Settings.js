@@ -55,7 +55,7 @@ const Settings = () => {
     <Modal>
       <div className="flex justify-between mr-2.5 ml-2.5 pb-5 border-b-[1px] border-[#eeeeee]">
         <h4 className="text-[#666666] font-extrabold"> SETTING</h4>
-        <Button onClick={closeSettingHandler}>
+        <Button name='open settings' onClick={closeSettingHandler}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"

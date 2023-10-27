@@ -13,7 +13,7 @@ const Header = (props) => {
   return (
     <>
       <div
-        className={`container-none flex justify-around p-4 text-white max-w-[480px] sm:max-w-[95%] m-auto ${
+        className={`container-none flex justify-around p-4 text-blue-900 max-w-[480px] sm:max-w-[95%] m-auto ${
           ctx.activeTab === 2
             ? themeCtx.theme.sb
             : ctx.activeTab === 3
@@ -27,15 +27,15 @@ const Header = (props) => {
         <div>
           <ul className="flex justify-evenly sm:gap-x-[8px] gap-x-4">
             <li className="sm:mr-0">
-              <a href="#about">
-                <Button className="flex align-center rounded pt-2 pb-2 pr-3 pl-3 min-w-[70px] sm:min-w-0 sm:pr-1 bg-[#ffffff1a] hover:bg-opaque">
+              <a href="#about" labelled="Read about the usage of web application.">
+                <Button  name='view usage' className="flex items-center rounded pt-2 pb-2 pr-3 pl-3 min-w-[70px] sm:min-w-0 sm:pr-1 bg-[#ffffff1a] hover:bg-opaque">
                   <svg
                     style={{ color: "darkgrey", marginRight: "4px" }}
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
-                    stroke="#fff"
+                    stroke="#1e1b4b"
                     className="w-5 h-5"
                   >
                     <path
@@ -44,14 +44,14 @@ const Header = (props) => {
                       d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
                     />
                   </svg>
-                  <p className="font-medium sm:hidden">About</p>
+                  <p className="font-bold sm:hidden">About</p>
                 </Button>
               </a>
             </li>
             <li className=" sm:mr-0">
               <Button
                 onClick={settingsHandler}
-                className="flex align-center  rounded pt-2 pb-2 pr-3 pl-3 min-w-[70px] sm:min-w-0 sm:pr-1 bg-[#ffffff1a] hover:bg-opaque"
+                className="flex items-center  rounded pt-2 pb-2 pr-3 pl-3 min-w-[70px] sm:min-w-0 sm:pr-1 bg-[#ffffff1a] hover:bg-opaque"
               >
                 <svg
                   style={{ color: "darkgrey", marginRight: "4px" }}
@@ -59,7 +59,7 @@ const Header = (props) => {
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
-                  stroke="#fff"
+                  stroke="#1e1b4b"
                   className="w-5 h-5"
                 >
                   <path
@@ -73,7 +73,7 @@ const Header = (props) => {
                     d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <p className="font-medium sm:hidden">Settings</p>
+                <p className="font-bold sm:hidden">Settings</p>
               </Button>
             </li>
           </ul>

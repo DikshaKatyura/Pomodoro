@@ -45,7 +45,9 @@ module.exports = {
       'text_4': "#b7d6eb",
       'text_5': "#facfe3",
       'white': "#ffffff",
-      'rose' : '#9f1239'
+      'rose' : '#9f1239',
+      'gray' : '#2E2E2E',
+      'blue-900' : '#1e1b4b'
       
     },
   },

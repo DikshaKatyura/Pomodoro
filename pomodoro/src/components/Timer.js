@@ -45,7 +45,7 @@ const Timer = (props) => {
   return (
     <>
       <div className="mb-10"></div>
-      <div className="max-w-[480px] sm:max-w-[95%] grid  m-auto text-center text-white">
+      <div className="max-w-[480px] sm:max-w-[90%] grid  m-auto text-center text-blue-900">
         <div
           className={`main transition-color ease-in-out delay-0 duration-500 ${
             ctx.activeTab === 2
@@ -61,12 +61,13 @@ const Timer = (props) => {
             style={style}
           >
             <div>
-              <p className="text-[120px] text-white font-bold sm:text-[100px]">
+              <p className="text-[120px] text-blue-900 font-bold sm:text-[100px]">
                 {timer}
               </p>
             </div>
-            <div className="mt-5 sm:mt-16">
+            <div className="mt-5 ">
               <Button
+              name = 'Start and pause button'
                 onClick={toggleTimerHandler}
                 className={`h-[55px] pr-3 pl-3 rounded bg-[#ffffff1a] hover:bg-opaque  text-2xl w-[200px]
                              font-bold `}

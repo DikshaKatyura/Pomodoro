@@ -20,6 +20,7 @@ const Background = (props) => {
       <div className="flex flex-wrap gap-4">
         {props.bg.map((btn, index) => (
           <Button
+          name='open options for background or theme changes'
             key={index}
             value={btn}
             className={`${btn} h-28 w-28 rounded border-2 border-slate-200 bg-cover bg-no-repeat`}

@@ -5,6 +5,7 @@ const Button = (props) => {
         value={props.value}
         onClick={props.onClick}
         type={props.type}
+        aria-label={props.name}
         className={`cursor-pointer transition-transform duration-500 ease-in-out  hover:scale-105 ${props.className}`}
       >
         {props.children}

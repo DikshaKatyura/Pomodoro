@@ -17,9 +17,10 @@ const Tabs = (props) => {
       >
         {["Pomodoro", "Short Break", "Long Break"].map((tab, index) => (
           <Button
+          name='Tabs'
             key={index}
             onClick={() => props.onTabIndex(index + 1)}
-            className={`pt-1.5 pb-1.5 pr-3 pl-3 rounded text-4 text-white font-bold ${
+            className={`pt-1.5 pb-1.5 pr-3 pl-3 rounded text-4 text-blue-900 font-bold ${
               ctx.activeTab === index + 1 ? "bg-[#ffffff1a]" : ""
             }`}
           >
