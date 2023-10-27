@@ -25,7 +25,7 @@ const SectionOne = () => {
 
   return (
     <div
-      className={`h-screen min-w-fit relative transition-all ease-in-out delay-0 duration-500 bg-repeat-round bg-contain ${
+      className={`h-screen min-w-fit relative transition-all ease-in-out delay-0 duration-500 bg-repeat-round bg-contain sm:bg-cover sm:bg-no-repeat${
         ctx.activeTab === 2
           ? themeCtx.background.sb
           : ctx.activeTab === 3
