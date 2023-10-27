@@ -1,7 +1,7 @@
 # Pomodoro - Kitchen Timer
 
 **You can access this web app through the link provided below:**
-https://kitchen-timer-9bd4f.web.app/
+<a href='https://kitchen-timer-9bd4f.web.app' target= '_blank'>https://kitchen-timer-9bd4f.web.app/</a>
 
 This Web App customizable pomodoro timer that works on desktop & mobile browser. This App helps you to focus on the tasks you are working on.
 <br>
