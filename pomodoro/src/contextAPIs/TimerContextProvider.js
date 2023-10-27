@@ -42,6 +42,15 @@ const TimerContextProvider = (props) => {
 
   const [progress, setProgress] = useState(0); //progress bar state
 
+  //setting title of the document dynamically
+  if(stateVariable.activeTab === 2){
+    document.title = 'Time for a Break!';
+  }else if(stateVariable.activeTab === 3){
+    document.title = 'Time for a Long Break!';
+  }else{
+    document.title = 'Time to Focus';
+  }
+
   let audio = new Audio(sound);
 
   if (timeEndSound) {

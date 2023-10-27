@@ -39,12 +39,14 @@ module.exports = {
       opaque: "#ffffff45",
     },
     textColor: {
-      text_1: "#b3b7dc",
-      text_2: "#aad7d2",
-      text_3: "#ff7c9c",
-      text_4: "#b7d6eb",
-      text_5: "#facfe3",
-      white: "#ffffff",
+      'text_1': "#b3b7dc",
+      'text_2': "#aad7d2",
+      'text_3': "#ff7c9c",
+      'text_4': "#b7d6eb",
+      'text_5': "#facfe3",
+      'white': "#ffffff",
+      'rose' : '#9f1239'
+      
     },
   },
   plugins: [],

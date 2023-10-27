@@ -1,28 +1,26 @@
 import classes from "./About.module.css";
 
 const About = () => {
-  const hColor = {
-    color: "#9f1239",
-  };
+ 
   return (
     <>
       <div className={classes.about} id="about">
         <div>
-          <h1 style={hColor}>What exactly is Kitchen Timer?</h1>
+          <h1 className = 'text-rose'>What exactly is Kitchen Timer?</h1>
           <p>
             Kitchen Timer is a time management web application to increase your
             productivity by let you focus on your task on a set interval and
             remind you to take a break in-between. This will improve you mental
             and physical health. This Web App is based on a Time Management
             Technique known as{" "}
-            <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">
+            <a className="text-rose" href="https://en.wikipedia.org/wiki/Pomodoro_Technique">
               Pomodoro Technique
             </a>
             . It is developed by Francesco Cirillo in the late 1980s.
           </p>
         </div>
         <div>
-          <h1 style={hColor}>What is Pomodoro Technique?</h1>
+          <h1 className = 'text-rose'>What is Pomodoro Technique?</h1>
           <p>
             Pomodoro Technique is a way to break your working times in
             intervals, typically 25 minutes in length, separated by short
@@ -31,7 +29,7 @@ const About = () => {
           </p>
         </div>
         <div>
-          <h1 style={hColor}>How does this work?</h1>
+          <h1 className = 'text-rose'>How does this work?</h1>
           <ul>
             <li>Decide on the task to be done.</li>
             <li>

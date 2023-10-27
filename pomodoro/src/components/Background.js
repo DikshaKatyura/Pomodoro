@@ -5,7 +5,6 @@ import { useContext } from "react";
 import theme from "../contextAPIs/ThemeContext";
 
 const Background = (props) => {
-  console.log(props);
   const themeCtx = useContext(theme);
   const onSelectBackground = (e) => {
     if (props.note === "bg") {
